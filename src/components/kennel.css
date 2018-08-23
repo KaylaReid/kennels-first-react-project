@@ -1,0 +1,8 @@
+.kennel {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.locations {
+    margin-top: 3em;
+}
