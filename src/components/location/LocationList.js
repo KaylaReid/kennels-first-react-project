@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './locations.css'
 
 export default class LocationList extends Component {
     render() {
