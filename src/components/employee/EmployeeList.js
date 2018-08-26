@@ -4,17 +4,21 @@ import './employees.css'
 export default class EmployeeList  extends Component {
     render() {
         return (
-            <div className="emplyees">
+            <section className="emplyees">
                 <h2>Our Employees</h2>
                 {
                 this.props.employees.map(employee =>
-                    <div id={`employee--${employee.id}`} key={employee.id}>
+                    <div className="card-body">
+                    <h5 className="card-title">
                         <h4>{employee.name}</h4>
-                        <p>{employee.address}</p>
-                    </div>
+                        <button onClick={() => this.props.deleteEmployee(employee.id)}
+                            className="card-link">Delete</button>
+                    </h5>
+                </div>
                 )
             }
-            </div>
+            </section>
         );
     }
 }
+

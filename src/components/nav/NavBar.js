@@ -21,6 +21,9 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/owners">Owners</Link>
                     </li>
+                    <li className="nav-item">
+                        <input className="nav-link" type="text" placeholder="Search"/>
+                    </li>
                 </ul>
             </nav>
         )
