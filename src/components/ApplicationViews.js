@@ -20,48 +20,55 @@ import locationManager from "../dataManager/locationManager"
             //, isLoaded: []
         }
 
-        // deleteAnimal = id => animalManager.deleteAnimal.removeAndList(id)(id)
-        //     .then(animals => this.setState({
-        //     animals: animals
-        //     }))
-
-
-        deleteAnimal = id => {
-            fetch(`http://localhost:5002/animals/${id}`, {
-                method: "DELETE"
+        deleteAnimal = (id) => animalManager.removeAndList(id)
+            .then(animals => {
+                console.log(animals)
+                this.setState({
+                    animals: animals
             })
-            .then(e => e.json())
-            .then(() => fetch(`http://localhost:5002/animals`))
-            .then(e => e.json())
-            .then(animals => this.setState({
-                animals: animals
-            }))
-        }
+        });
+
+
+        // deleteAnimal = id => {
+        //     fetch(`http://localhost:5002/animals/${id}`, {
+        //         method: "DELETE"
+        //     })
+        //     .then(e => e.json())
+        //     .then(() => fetch(`http://localhost:5002/animals`))
+        //     .then(e => e.json())
+        //     .then(animals => this.setState({
+        //         animals: animals
+        //     }))
+        // }
 
     componentDidMount() {
         const newState = {}
 
-        animalManager.getAllAnimals().then(allAnimals => {
+        animalManager.getAllAnimals()
+        .then(allAnimals => {
             this.setState({
                 animals: allAnimals
             })
         })
-        employeeManager.getAllEmployees().then(allEmployees => {
+        employeeManager.getAllEmployees()
+        .then(allEmployees => {
             this.setState({
                 employees: allEmployees
             })
         })
-        ownerManager.getAllOwners().then(allOwners => {
+        ownerManager.getAllOwners()
+        .then(allOwners => {
             this.setState({
                 owners: allOwners
             })
         })
-        locationManager.getAllLocations().then(allLocations => {
+        locationManager.getAllLocations()
+        .then(allLocations => {
             this.setState({
                 locations: allLocations
             })
         })
-            .then(() => this.setState(newState))
+        .then(() => this.setState(newState))
     }
 
     render() {

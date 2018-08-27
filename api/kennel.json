@@ -2,19 +2,23 @@
   "employees": [
     {
       "id": 1,
-      "name": "Kayla Reid"
+      "name": "Kayla Reid",
+      "position": "Cat cuddler"
     },
     {
       "id": 2,
-      "name": "Helen Chalmers"
+      "name": "Helen Chalmers",
+      "position": "Puppy lover"
     },
     {
       "id": 3,
-      "name": "Madi Peper"
+      "name": "Madi Peper",
+      "position": "Puppy Lover"
     },
     {
       "id": 4,
-      "name": "Meg Ducharme"
+      "name": "Shannon Reid",
+      "position": "Cat cuddler"
     }
   ],
   "locations": [

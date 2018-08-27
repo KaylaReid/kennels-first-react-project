@@ -4,6 +4,8 @@ import  Cat from "./cat.jpg"
 
 export default class AnimalList extends Component {
     render () {
+        // JavaScript stuff can be writen here!
+        const name = "Kayla Reid"
         return (
             <section className="animals">
             {
