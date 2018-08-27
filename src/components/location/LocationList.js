@@ -14,8 +14,8 @@ export default class LocationList extends Component {
                                     <h4>{location.name}</h4>
                                     <p>{location.address}</p>
                                     <p>{location.city}</p>
-                                    <button onClick={() => this.props.deleteLocation(location.id)}
-                                        className="card-link">Delete</button>
+                                    <button onClick={() => this.props.deleteLocation(location)}
+                                        className="card-link">Remove Location</button>
                                 </h5>
                             </div>
                         </div>

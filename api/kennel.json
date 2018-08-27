@@ -1,11 +1,6 @@
 {
   "employees": [
     {
-      "id": 1,
-      "name": "Kayla Reid",
-      "position": "Cat cuddler"
-    },
-    {
       "id": 2,
       "name": "Helen Chalmers",
       "position": "Puppy lover"
@@ -62,6 +57,11 @@
       "id": 3,
       "name": "Stryder",
       "type": "Cat"
+    },
+    {
+      "id": 4,
+      "name": "Bella",
+      "type": "Dog"
     }
   ],
   "owners": [

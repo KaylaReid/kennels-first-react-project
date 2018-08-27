@@ -1,23 +1,33 @@
 import React, { Component } from 'react'
 import './employees.css'
+import {Link} from 'react-router-dom'
 
 export default class EmployeeList  extends Component {
     render() {
         return (
-            <section className="emplyees">
+            <section className="employee-section">
                 <h2>Our Employees</h2>
+                <div className="employees">
                 {
                 this.props.employees.map(employee =>
-                    <div className="card-body">
-                    <h5 className="card-title">
-                        <h4>{employee.name}</h4>
-                        <p>Position: {employee.position}</p>
-                        <button onClick={() => this.props.deleteEmployee(employee.id)}
-                            className="card-link">Delete</button>
-                    </h5>
+                    <div className="card" key={employee.id}>
+                        <div className="card-body">
+                        <div className="card-title">
+                            <h4>{employee.name}</h4>
+                            <p>Position: {employee.position}</p>
+                            <button onClick={() => this.props.deleteEmployee(employee)}
+                                className="card-link">Terminate</button>
+                            <Link className="nav-link" to={`/employee/${employee.id}`}>Details</Link>
+                        
+                        </div>
+                    </div>
                 </div>
+                
+                
                 )
             }
+            </div>
+
             </section>
         );
     }
