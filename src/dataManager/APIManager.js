@@ -18,6 +18,17 @@ const remoteURL = "http://localhost:5002"
             })
             .then(() => this.getAllData(key)) 
         }
-    }
+    }, 
+    post: {
+        value: function (newAnimal, key) {
+            return fetch(`${remoteURL}/${key}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newAnimal)
+            }).then(e => e.json())
+        }
+    },
 })     
 export default APIManager;

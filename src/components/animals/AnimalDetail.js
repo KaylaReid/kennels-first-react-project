@@ -10,14 +10,14 @@ export default class AnimalDetail extends Component {
             user clicked on by looking at the `this.props.animals`
             collection that was passed down from ApplicationViews
         */
-        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
+        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId, 0)) || {}
 
         return (
             <section className="animals">
                 <div key={animal.id} className="card">
                     <div className="card-body">
                         <h4 className="card-title">
-                            <img src={cat} className="icon--cat" />
+                            <img src={cat} alt="cat" className="icon--cat" />
                             {animal.name}
                         </h4>
                         <h6 className="card-title">{animal.type}</h6>

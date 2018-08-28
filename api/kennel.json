@@ -1,6 +1,11 @@
 {
   "employees": [
     {
+      "id": 1,
+      "name": "Kayla Reid",
+      "position": "Cat cuddler"
+    },
+    {
       "id": 2,
       "name": "Helen Chalmers",
       "position": "Puppy lover"
@@ -62,6 +67,24 @@
       "id": 4,
       "name": "Bella",
       "type": "Dog"
+    },
+    {
+      "name": "Jack",
+      "type": "The cat",
+      "employeeId": 1,
+      "id": 5
+    },
+    {
+      "name": "Jack",
+      "type": "Cat",
+      "employeeId": 1,
+      "id": 6
+    },
+    {
+      "name": "steve",
+      "type": "grumpy cat",
+      "employeeId": 2,
+      "id": 7
     }
   ],
   "owners": [

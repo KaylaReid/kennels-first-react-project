@@ -4,8 +4,7 @@ import {Link} from 'react-router-dom'
 
 export default class EmployeeDetail extends Component {
     render() {
-        console.log(this.props)
-        const employee = this.props.employees.find(a => a.id === parseInt(this.props.match.params.employeeId)) || {}
+        const employee = this.props.employees.find(a => a.id === parseInt(this.props.match.params.employeeId, 0)) || {}
 
         return (
             <section className="employees">

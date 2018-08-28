@@ -5,8 +5,12 @@ import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnersList from './owners/OwnersList'
 import AnimalDetail from './animals/AnimalDetail'
+import AnimalForm from './animals/AnimalForm'
+import OwnerDetail from './owners/OwnerDetail'
 import EmployeeDetail from './employee/EmployeeDetail'
 import APIManager from "../dataManager/APIManager"
+
+// import { Redirect} from 'react-router-dom'
 
     class ApplicationViews extends Component {
 
@@ -47,6 +51,17 @@ import APIManager from "../dataManager/APIManager"
                 })
             });
         }
+
+        // trying to make the delete from details page render the list page
+        // redirect = () => {
+        //     return <Redirect to='/EmployeeList'/>
+        // }
+
+        addAnimal = animal => APIManager.post(animal, "animals")
+            .then(() => APIManager.getAllData("animals"))
+            .then(animals => this.setState({
+            animals: animals
+             }))
 
 
         componentDidMount() {
@@ -132,11 +147,15 @@ import APIManager from "../dataManager/APIManager"
                     return <LocationList deleteLocation={this.deleteLocation} locations={this.state.locations} />
                 }} />
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
-                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                <Route exact path="/animals/:animalId(\d+)" render={(props) => {
                     return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals}/>
                 }} />
+                <Route path="/animals/new" render={(props) => {
+                    return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees}/>
+                }} />
+
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} />
@@ -145,6 +164,9 @@ import APIManager from "../dataManager/APIManager"
                 }} />
                 <Route exact path="/owners" render={(props) => {
                     return <OwnersList deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                }} />
+                 <Route exact path="/owners/:ownerId(\d+)" render={(props) => {
+                    return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners}/>
                 }} />
             </React.Fragment>
         )
