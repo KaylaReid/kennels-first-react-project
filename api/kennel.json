@@ -19,6 +19,11 @@
       "id": 4,
       "name": "Shannon Reid",
       "position": "Cat cuddler"
+    },
+    {
+      "name": "Heather Jones",
+      "position": "Cat Cuddler",
+      "id": 5
     }
   ],
   "locations": [
@@ -75,12 +80,6 @@
       "id": 5
     },
     {
-      "name": "Jack",
-      "type": "Cat",
-      "employeeId": 1,
-      "id": 6
-    },
-    {
       "name": "steve",
       "type": "grumpy cat",
       "employeeId": 2,
@@ -94,11 +93,6 @@
       "phoneNumber": "615-370-5567"
     },
     {
-      "id": 2,
-      "name": "Emma Watson",
-      "phoneNumber": "615-786-3428"
-    },
-    {
       "id": 3,
       "name": "Harry Potter",
       "phoneNumber": "615-948-6276"
@@ -107,6 +101,11 @@
       "id": 4,
       "name": "Eleven",
       "phoneNumber": "615-424-9387"
+    },
+    {
+      "name": "Winston Churchill",
+      "phoneNumber": "675-987-2389",
+      "id": 5
     }
   ]
 }

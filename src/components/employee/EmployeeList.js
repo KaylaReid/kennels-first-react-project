@@ -4,9 +4,15 @@ import {Link} from 'react-router-dom'
 
 export default class EmployeeList  extends Component {
     render() {
+        
         return (
+            <React.Fragment>
             <section className="employee-section">
                 <h2>Our Employees</h2>
+            <div className="employeeButton">
+                <button type="button" className="btn btn-success"
+                onClick={() => {this.props.history.push("/employees/new")}}>Add New Employee</button>
+            </div>
                 <div className="employees">
                 {
                 this.props.employees.map(employee =>
@@ -18,7 +24,6 @@ export default class EmployeeList  extends Component {
                             <button onClick={() => this.props.deleteEmployee(employee)}
                                 className="card-link">Terminate</button>
                             <Link className="nav-link" to={`/employee/${employee.id}`}>Details</Link>
-                        
                         </div>
                     </div>
                 </div>
@@ -29,6 +34,7 @@ export default class EmployeeList  extends Component {
             </div>
 
             </section>
+            </React.Fragment>
         );
     }
 }

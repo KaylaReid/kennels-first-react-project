@@ -7,6 +7,10 @@ export default class OwnersList extends Component {
          return(
             <section className="owners">
                 <h2>Owners</h2>
+                <div className="employeeButton">
+                    <button type="button" className="btn btn-success"
+                    onClick={() => {this.props.history.push("/owners/new")}}>Add New Owner</button>
+                </div>
                 {
                     this.props.owners.map(owner =>
                         <div className="card-body" key={owner.id}>

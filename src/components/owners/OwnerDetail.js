@@ -7,7 +7,7 @@ export default class OwnerDetail extends Component {
 
         const owner = this.props.owners.find(a => a.id === parseInt(this.props.match.params.ownerId, 0)) || {}
         return (
-            <section className="owners">
+            <section className="owners-details">
                 <div key={owner.id} className="card">
                     <div className="card-body">
                         <h4 className="card-title">

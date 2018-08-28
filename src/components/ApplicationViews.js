@@ -7,7 +7,9 @@ import OwnersList from './owners/OwnersList'
 import AnimalDetail from './animals/AnimalDetail'
 import AnimalForm from './animals/AnimalForm'
 import OwnerDetail from './owners/OwnerDetail'
+import OwnerForm from './owners/OwnerForm'
 import EmployeeDetail from './employee/EmployeeDetail'
+import EmployeeForm from './employee/EmployeeForm'
 import APIManager from "../dataManager/APIManager"
 
 // import { Redirect} from 'react-router-dom'
@@ -63,6 +65,18 @@ import APIManager from "../dataManager/APIManager"
             animals: animals
              }))
 
+        addEmployee = employee => APIManager.post(employee, "employees")
+            .then(() => APIManager.getAllData("employees"))
+            .then(employees => this.setState({
+                employees: employees
+             }))
+
+        addOwner = owner => APIManager.post(owner, "owners")
+            .then(() => APIManager.getAllData("owners"))
+            .then(owners => this.setState({
+                owners: owners
+             }))
+
 
         componentDidMount() {
             const newState = {}
@@ -94,52 +108,6 @@ import APIManager from "../dataManager/APIManager"
             .then(() => this.setState(newState))
         }
 
-
-
-        // Old delete option
-        // deleteAnimal = id => {
-        //     fetch(`http://localhost:5002/animals/${id}`, {
-        //         method: "DELETE"
-        //     })
-        //     .then(e => e.json())
-        //     .then(() => fetch(`http://localhost:5002/animals`))
-        //     .then(e => e.json())
-        //     .then(animals => this.setState({
-        //         animals: animals
-        //     }))
-        // }
-        
-        // Old componentDidMount fetch calls 
-    // componentDidMount() {
-    //     const newState = {}
-
-    //     animalManager.getAllAnimals()
-    //     .then(allAnimals => {
-    //         this.setState({
-    //             animals: allAnimals
-    //         })
-    //     })
-    //     employeeManager.getAllEmployees()
-    //     .then(allEmployees => {
-    //         this.setState({
-    //             employees: allEmployees
-    //         })
-    //     })
-    //     ownerManager.getAllOwners()
-    //     .then(allOwners => {
-    //         this.setState({
-    //             owners: allOwners
-    //         })
-    //     })
-    //     locationManager.getAllLocations()
-    //     .then(allLocations => {
-    //         this.setState({
-    //             locations: allLocations
-    //         })
-    //     })
-    //     .then(() => this.setState(newState))
-    // }
-
     render() {
         return (
             <React.Fragment>
@@ -152,21 +120,27 @@ import APIManager from "../dataManager/APIManager"
                 <Route exact path="/animals/:animalId(\d+)" render={(props) => {
                     return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals}/>
                 }} />
-                <Route path="/animals/new" render={(props) => {
+                <Route exact path="/animals/new" render={(props) => {
                     return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees}/>
                 }} />
 
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                    return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
                 }} />
                 <Route exact path="/employee/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees}/>
                 }} />
+                <Route exact path="/employees/new" render={(props) => {
+                    return <EmployeeForm {...props} addEmployee={this.addEmployee} employees={this.state.employees}/>
+                }} />
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnersList deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                    return <OwnersList {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
                 }} />
                  <Route exact path="/owners/:ownerId(\d+)" render={(props) => {
                     return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners}/>
+                }} />
+                <Route exact path="/owners/new" render={(props) => {
+                    return <OwnerForm {...props} addOwner={this.addOwner} owners={this.state.owners}/>
                 }} />
             </React.Fragment>
         )
