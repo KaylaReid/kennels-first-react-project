@@ -6,6 +6,7 @@ import EmployeeList from './employee/EmployeeList'
 import OwnersList from './owners/OwnersList'
 import AnimalDetail from './animals/AnimalDetail'
 import AnimalForm from './animals/AnimalForm'
+import AnimalEdit from './animals/AnimalEdit'
 import OwnerDetail from './owners/OwnerDetail'
 import OwnerForm from './owners/OwnerForm'
 import EmployeeDetail from './employee/EmployeeDetail'
@@ -22,37 +23,45 @@ import APIManager from "../dataManager/APIManager"
             animals: [],
             employees: [],
             owners: []
-            //, isLoaded: []
+            //, isLoaded: false
         }
 
-        deleteAnimal = (animal) => {APIManager.removeAndListData("animals", animal.id)
+        deleteAnimal = (animal) => APIManager.removeAndListData("animals", animal.id)
             .then(animals => {
                 this.setState({
                     animals: animals
                 })
             });
-        }
-        deleteEmployee = (employee) => {APIManager.removeAndListData("employees", employee.id)
+        
+        deleteEmployee = (employee) => APIManager.removeAndListData("employees", employee.id)
             .then(employees => {
                 this.setState({
                     employees: employees
                 })
             });
-        }
-        deleteOwner = (owner) => {APIManager.removeAndListData("owners", owner.id)
+        
+        deleteOwner = (owner) => APIManager.removeAndListData("owners", owner.id)
             .then(owners => {
                 this.setState({
                     owners: owners
                 })
             });
-        }
-        deleteLocation = (location) => {APIManager.removeAndListData("locations", location.id)
+        
+        deleteLocation = (location) => APIManager.removeAndListData("locations", location.id)
             .then(locations => {
                 this.setState({
                     locations: locations
                 })
             });
-        }
+        
+
+        editAnimal = (animalId, animalObject) => APIManager.edit("animals", animalId, animalObject)
+            .then(animals => {
+                this.setState({
+                    animals: animals
+                })
+            });
+
 
         // trying to make the delete from details page render the list page
         // redirect = () => {
@@ -119,6 +128,10 @@ import APIManager from "../dataManager/APIManager"
                 }} />
                 <Route exact path="/animals/:animalId(\d+)" render={(props) => {
                     return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals}/>
+                }} />
+                <Route exact path="/animals/edit/:animalId(\d+)" render={(props) => {
+                    return <AnimalEdit {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals}
+                    editAnimal={this.editAnimal} employees={this.state.employees}/>
                 }} />
                 <Route exact path="/animals/new" render={(props) => {
                     return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees}/>

@@ -21,6 +21,9 @@ export default class EmployeeForm extends Component {
      */
     constructNewEmployee = evt => {
         evt.preventDefault()
+        if ((this.state.position === "") || (this.state.name === "")) {
+            window.alert("Please fill out both fields")
+        } else {
             const employee = {
                 name: this.state.employeeName,
                 position: this.state.position
@@ -28,7 +31,7 @@ export default class EmployeeForm extends Component {
 
             // Create the employee and redirect user to employee list
             this.props.addEmployee(employee).then(() => this.props.history.push("/employees"))
-        
+        }
     }
 
     render() {
@@ -40,7 +43,7 @@ export default class EmployeeForm extends Component {
                         <input type="text" required="true"
                                className="form-control"
                                onChange={this.handleFieldChange}
-                               id="employeeName"
+                               id="name"
                                placeholder="Employee Name" />
                     </div>
                     <div className="form-group">
@@ -48,7 +51,7 @@ export default class EmployeeForm extends Component {
                         <input type="text" required="true"
                                className="form-control"
                                onChange={this.handleFieldChange}
-                               id="position" placeholder="position" />
+                               id="position" placeholder="Position" />
                     </div>
                     <button type="submit" onClick={this.constructNewEmployee} className="btn btn-primary">Submit</button>
                 </form>

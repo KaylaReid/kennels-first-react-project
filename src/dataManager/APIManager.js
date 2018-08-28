@@ -13,6 +13,8 @@ const remoteURL = "http://localhost:5002"
     },
     removeAndListData: {
         value: function (key, id) {
+            console.log(id)
+            
             return fetch(`${remoteURL}/${key}/${id}`, {
                 method: "DELETE"
             })
@@ -20,15 +22,28 @@ const remoteURL = "http://localhost:5002"
         }
     }, 
     post: {
-        value: function (newAnimal, key) {
+        value: function (newObject, key) {
             return fetch(`${remoteURL}/${key}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(newAnimal)
+                body: JSON.stringify(newObject)
             }).then(e => e.json())
         }
     },
+    edit: {
+        value: function (key, id, editedObject) {
+            console.log(editedObject)
+            return fetch(`${remoteURL}/${key}/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(editedObject)
+            }).then(e => e.json())
+            .then(() => this.getAllData(key))
+        }
+    }
 })     
 export default APIManager;

@@ -21,9 +21,10 @@ export default class AnimalDetail extends Component {
                             {animal.name}
                         </h4>
                         <h6 className="card-title">{animal.type}</h6>
-                        <Link className="nav-link" to={`/animals`}
-                            onClick={() => this.props.deleteAnimal(animal)}
-                            className="card-link">Release</Link>
+                        <button className="nav-link"
+                            onClick={() => this.props.deleteAnimal(animal)
+                            .then(() => this.props.history.push('/animals'))}
+                            className="card-link">Release</button>
                     </div>
                 </div>
             </section>

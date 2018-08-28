@@ -21,6 +21,9 @@ export default class OwnerForm extends Component {
      */
     constructNewOwner = evt => {
         evt.preventDefault()
+        if ((this.state.phoneNumber === "") || (this.state.name === "")) {
+            window.alert("Please fill out both fields")
+        } else {
             const owner = {
                 name: this.state.ownerName,
                 phoneNumber: this.state.phoneNumber
@@ -28,7 +31,7 @@ export default class OwnerForm extends Component {
 
             // Create the employee and redirect user to employee list
             this.props.addOwner(owner).then(() => this.props.history.push("/owners"))
-        
+        }
     }
 
     render() {
@@ -40,7 +43,7 @@ export default class OwnerForm extends Component {
                         <input type="text" required="true"
                                className="form-control"
                                onChange={this.handleFieldChange}
-                               id="ownerName"
+                               id="name"
                                placeholder="New Onwers Name" />
                     </div>
                     <div className="form-group">

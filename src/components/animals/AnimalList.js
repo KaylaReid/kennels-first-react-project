@@ -21,9 +21,11 @@ export default class AnimalList extends Component {
                                 <img src={Cat} alt="cat" className="icon--cat" />
                                 {animal.type}<br />
                                 {animal.name}
-                                <button onClick={() => this.props.deleteAnimal(animal)}
+                                <button onClick={() => this.props.deleteAnimal(animal)
+                                .then(() => this.props.history.push('/animals'))}
                                     className="card-link">Release</button>
                                 <Link className="nav-link" to={`/animals/${animal.id}`}>Details</Link>
+                                <Link className="nav-link" to={`/animals/edit/${animal.id}`}>Edit</Link>
                             </h5>
                         </div>
                     </div>
