@@ -34,7 +34,6 @@ const remoteURL = "http://localhost:5002"
     },
     edit: {
         value: function (key, id, editedObject) {
-            console.log(editedObject)
             return fetch(`${remoteURL}/${key}/${id}`, {
                 method: "PATCH",
                 headers: {

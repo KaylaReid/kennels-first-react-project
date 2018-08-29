@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from "react"
 import AnimalList from './animals/AnimalList'
 import LocationList from './location/LocationList'
@@ -12,6 +12,7 @@ import OwnerForm from './owners/OwnerForm'
 import EmployeeDetail from './employee/EmployeeDetail'
 import EmployeeForm from './employee/EmployeeForm'
 import APIManager from "../dataManager/APIManager"
+import Login from './Login/Login'
 
 // import { Redirect} from 'react-router-dom'
 
@@ -25,6 +26,8 @@ import APIManager from "../dataManager/APIManager"
             owners: []
             //, isLoaded: false
         }
+
+        isAuthenticated = () => localStorage.getItem("credentials") !== null
 
         deleteAnimal = (animal) => APIManager.removeAndListData("animals", animal.id)
             .then(animals => {
@@ -56,7 +59,6 @@ import APIManager from "../dataManager/APIManager"
         
 
         editAnimal = (animalId, animalObject) => {
-            console.log("edit animal app view")
             return APIManager.edit("animals", animalId, animalObject)
             .then(animals => {
 
@@ -123,11 +125,21 @@ import APIManager from "../dataManager/APIManager"
     render() {
         return (
             <React.Fragment>
+                <Route exact path="/login" component={Login} />
+              
                 <Route exact path="/" render={(props) => {
+                    if (this.isAuthenticated()) {
                     return <LocationList deleteLocation={this.deleteLocation} locations={this.state.locations} />
+                    } else {
+                    return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/animals" render={(props) => {
+                    if (this.isAuthenticated()) {
                     return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    } else {
+                    return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/animals/:animalId(\d+)" render={(props) => {
                     return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals}/>
@@ -140,9 +152,14 @@ import APIManager from "../dataManager/APIManager"
                     return <AnimalForm {...props} addAnimal={this.addAnimal} employees={this.state.employees}/>
                 }} />
 
-                <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
-                }} />
+                <Route exact path="/employees" render={props => {
+                    if (this.isAuthenticated()) {
+                    return <EmployeeList deleteEmployee={this.deleteEmployee}
+                             employees={this.state.employees} />
+                    } else {
+                    return <Redirect to="/login" />
+                    }
+                    }} />
                 <Route exact path="/employee/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees}/>
                 }} />
@@ -150,7 +167,11 @@ import APIManager from "../dataManager/APIManager"
                     return <EmployeeForm {...props} addEmployee={this.addEmployee} employees={this.state.employees}/>
                 }} />
                 <Route exact path="/owners" render={(props) => {
+                    if (this.isAuthenticated()) {
                     return <OwnersList {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                } else {
+                    return <Redirect to="/login" />
+                    }
                 }} />
                  <Route exact path="/owners/:ownerId(\d+)" render={(props) => {
                     return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners}/>

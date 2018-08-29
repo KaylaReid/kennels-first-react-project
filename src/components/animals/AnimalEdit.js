@@ -29,15 +29,11 @@ export default class AnimalEdit extends Component {
         }
         this.props.editAnimal(this.props.match.params.animalId, newAnimal)
         .then(() => this.props.history.push("/animals"))
-   
+
     }
     
-
     componentDidMount () {
         const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
-        // const employee = this.props.employees.find(e => e.id === animal.employeeId) || {}
-        console.log("a", animal);
-        // console.log("e", employee);
         this.setState({
             name: animal.name,
             type: animal.type,
@@ -47,8 +43,7 @@ export default class AnimalEdit extends Component {
     }
 
     render() {
-        // console.log(this.props.animals) 
-        // const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
+    
         return (
             <React.Fragment>
                 <form className="animalForm">

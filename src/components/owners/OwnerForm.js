@@ -25,7 +25,7 @@ export default class OwnerForm extends Component {
             window.alert("Please fill out both fields")
         } else {
             const owner = {
-                name: this.state.ownerName,
+                name: this.state.name,
                 phoneNumber: this.state.phoneNumber
             }
 

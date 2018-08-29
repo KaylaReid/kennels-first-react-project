@@ -54,22 +54,34 @@
   ],
   "animals": [
     {
-      "name": "kayla",
-      "type": "grumpy cat",
-      "employeeId": 2,
-      "id": 19
-    },
-    {
-      "name": "david345",
-      "type": "grumpy cat",
-      "employeeId": 4,
-      "id": 29
-    },
-    {
       "name": "fluffy",
       "type": "white cat",
       "employeeId": 5,
       "id": 30
+    },
+    {
+      "name": "kayla",
+      "type": "dog",
+      "employeeId": 2,
+      "id": 31
+    },
+    {
+      "name": "Maggie",
+      "type": "Dog",
+      "employeeId": 2,
+      "id": 32
+    },
+    {
+      "name": "Ben",
+      "type": "pretty cat",
+      "employeeId": 4,
+      "id": 33
+    },
+    {
+      "name": "Dejoncé",
+      "type": "Happy CAT!",
+      "employeeId": 2,
+      "id": 34
     }
   ],
   "owners": [
@@ -97,10 +109,6 @@
       "name": "Winston Churchill",
       "phoneNumber": "675-987-2389",
       "id": 9
-    },
-    {
-      "phoneNumber": "675-987-2389",
-      "id": 10
     }
   ]
 }

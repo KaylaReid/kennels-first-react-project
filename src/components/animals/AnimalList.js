@@ -17,16 +17,16 @@ export default class AnimalList extends Component {
                 this.props.animals.map(animal =>
                     <div key={animal.id} className="card">
                         <div className="card-body">
-                            <h5 className="card-title">
+                            <div className="card-title">
                                 <img src={Cat} alt="cat" className="icon--cat" />
-                                {animal.type}<br />
-                                {animal.name}
+                                <h4>{animal.name}</h4>
+                                <h4>Type: <br />  {animal.type}</h4>
                                 <button onClick={() => this.props.deleteAnimal(animal)
                                 .then(() => this.props.history.push('/animals'))}
                                     className="card-link">Release</button>
                                 <Link className="nav-link" to={`/animals/${animal.id}`}>Details</Link>
                                 <Link className="nav-link" to={`/animals/edit/${animal.id}`}>Edit</Link>
-                            </h5>
+                            </div>
                         </div>
                     </div>
                 )

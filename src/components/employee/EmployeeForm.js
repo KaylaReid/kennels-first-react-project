@@ -25,7 +25,7 @@ export default class EmployeeForm extends Component {
             window.alert("Please fill out both fields")
         } else {
             const employee = {
-                name: this.state.employeeName,
+                name: this.state.name,
                 position: this.state.position
             }
 
