@@ -54,16 +54,22 @@
   ],
   "animals": [
     {
-      "name": "ben",
-      "type": "cat",
-      "employeeId": 5,
+      "name": "kayla",
+      "type": "grumpy cat",
+      "employeeId": 2,
       "id": 19
     },
     {
-      "name": "david",
-      "type": "dog",
-      "employeeId": 5,
+      "name": "david345",
+      "type": "grumpy cat",
+      "employeeId": 4,
       "id": 29
+    },
+    {
+      "name": "fluffy",
+      "type": "white cat",
+      "employeeId": 5,
+      "id": 30
     }
   ],
   "owners": [

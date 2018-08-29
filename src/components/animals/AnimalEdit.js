@@ -16,37 +16,39 @@ export default class AnimalEdit extends Component {
         this.setState(stateToChange)
     }
 
-    /*
-        Local method for validation, creating animal object, and
-        invoking the function reference passed from parent component
-     */
-    // constructNewAnimal = evt => {
-    //     evt.preventDefault()
-    //     if (this.state.employee === "") {
-    //         window.alert("Please select a caretaker")
-    //     } else {
-    //         const animal = {
-    //             name: this.state.animalName,
-    //             type: this.state.type,
-    //             employeeId: this.props.employees.find(e => e.name === this.state.employee).id
-    //         }
-
-    //         // Create the animal and redirect user to animal list
-    //         this.props.addAnimal(animal).then(() => this.props.history.push("/animals"))
-    //     }
-    // }
-     edit = () => {this.props.editAnimal(parseInt(this.props.match.params.animalId), 
-        {
+     edit = (event) => {
+         event.preventDefault()
+         let employeeId = this.state.employeeId
+        if(typeof (this.state.employeeId) != 'number'){
+            employeeId = this.props.employees.find(e => this.state.employeeId === e.name).id
+        }
+        const newAnimal = {
             name: this.state.name,
             type: this.state.type,
-            employeeId: this.state.employeeId
+            employeeId: employeeId
+        }
+        this.props.editAnimal(this.props.match.params.animalId, newAnimal)
+        .then(() => this.props.history.push("/animals"))
+   
+    }
+    
+
+    componentDidMount () {
+        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
+        // const employee = this.props.employees.find(e => e.id === animal.employeeId) || {}
+        console.log("a", animal);
+        // console.log("e", employee);
+        this.setState({
+            name: animal.name,
+            type: animal.type,
+            employeeId: animal.employeeId
         })
-        .then(() => this.props.history.push('/animals'))
+
     }
 
     render() {
-        console.log(this.props.animals) 
-        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
+        // console.log(this.props.animals) 
+        // const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
         return (
             <React.Fragment>
                 <form className="animalForm">
@@ -56,7 +58,7 @@ export default class AnimalEdit extends Component {
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="name"
-                               defaultValue={animal.name}
+                               defaultValue={this.state.name}
                                placeholder="Animal name" />
                     </div>
                     <div className="form-group">
@@ -65,15 +67,15 @@ export default class AnimalEdit extends Component {
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="type" 
-                               defaultValue={animal.type}
+                               defaultValue={this.state.type}
                                placeholder="Type" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="employee">Assign to caretaker</label>
-                        <select defaultValue={animal.employeeId} name="employee" id="employeeId"
+                        <select defaultValue={this.state.employeeId} name="employee" id="employeeId"
                                 onChange={this.handleFieldChange}>
                         {
-                            this.props.employees.map(e => <option key={e.id} id={e.id}>{e.name}</option>)
+                            this.props.employees.map(e => <option key={e.id} id="employeeId">{e.name}</option>)
                         }
                         </select>
                     </div>

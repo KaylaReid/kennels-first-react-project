@@ -55,13 +55,16 @@ import APIManager from "../dataManager/APIManager"
             });
         
 
-        editAnimal = (animalId, animalObject) => APIManager.edit("animals", animalId, animalObject)
+        editAnimal = (animalId, animalObject) => {
+            console.log("edit animal app view")
+            return APIManager.edit("animals", animalId, animalObject)
             .then(animals => {
+
                 this.setState({
                     animals: animals
                 })
             });
-
+        }
 
         // trying to make the delete from details page render the list page
         // redirect = () => {
