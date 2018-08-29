@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./animals.css"
 import cat from "./cat.jpg"
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 export default class AnimalDetail extends Component {
     render() {

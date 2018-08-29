@@ -8,7 +8,8 @@ export default class Login extends Component {
     // Set initial state
     state = {
         email: "",
-        password: ""
+        password: "",
+        // isChecked: false
     }
 
     // Update state whenever an input field is edited
@@ -18,26 +19,32 @@ export default class Login extends Component {
         this.setState(stateToChange)
     }
 
+
     // Simplistic handler for login submit
     handleLogin = (e) => {
         e.preventDefault()
-
-        
-
-        /*
-            For now, just store the email and password that
-            the customer enters into local storage.
-        */
-        localStorage.setItem(
-            "credentials",
-            JSON.stringify({
-                email: this.state.email,
-                password: this.state.password
-            })
-        )
-        this.props.history.push("/")
+        if(e.target.id === 'remeberMe'){
+            // this.setState({isChecked: true})
+            localStorage.setItem(
+                "credentials",
+                JSON.stringify({
+                    email: this.state.email,
+                    password: this.state.password
+                })
+            )
+       
+        } else {
+            sessionStorage.setItem(
+                "credentials",
+                JSON.stringify({
+                    email: this.state.email,
+                    password: this.state.password
+                })
+            )
+            this.props.history.push("/")
+        }    
     }
-
+ 
     render() {
         return (
             <form onSubmit={this.handleLogin} className="login">
@@ -57,7 +64,7 @@ export default class Login extends Component {
                        placeholder="Password"
                        required="" /><br />
                 <label htmlFor="reemberMe">Remeber Me</label>
-                <input type="checkbox"/><br />
+                <input onClick={this.handleLogin} id="remeberMe" type="checkbox"/><br />
                 <button type="submit">Sign in</button>
             </form>
         )
