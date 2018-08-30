@@ -2,23 +2,18 @@ import React, { Component } from "react"
 import "./employees.css"
 
 export default class EmployeeForm extends Component {
-    // Set initial state
     state = {
         name: "",
-        position: ""
+        position: "",
+        locationId: ""
     }
 
-    // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
 
-    /*
-        Local method for validation, creating employee object, and
-        invoking the function reference passed from parent component
-     */
     constructNewEmployee = evt => {
         evt.preventDefault()
         if ((this.state.position === "") || (this.state.name === "")) {
@@ -26,10 +21,9 @@ export default class EmployeeForm extends Component {
         } else {
             const employee = {
                 name: this.state.name,
-                position: this.state.position
+                position: this.state.position,
+                locationId: this.props.locations.find(location => location.name === this.state.locationId).id
             }
-
-            // Create the employee and redirect user to employee list
             this.props.addEmployee(employee).then(() => this.props.history.push("/employees"))
         }
     }
@@ -52,6 +46,14 @@ export default class EmployeeForm extends Component {
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="position" placeholder="Position" />
+                        <label htmlFor="locationId">Assign employee to a location</label>
+                        <select defaultValue="" name="locationId" id="locationId"
+                                onChange={this.handleFieldChange}>
+                            <option value="">Select a location</option>
+                        {
+                            this.props.locations.map(e => <option key={e.id} id={e.id}>{e.name}</option>)
+                        }
+                        </select>
                     </div>
                     <button type="submit" onClick={this.constructNewEmployee} className="btn btn-primary">Submit</button>
                 </form>

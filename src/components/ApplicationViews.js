@@ -158,7 +158,7 @@ import Login from './Login/Login'
                     return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees}/>
                 }} />
                 <Route exact path="/employees/new" render={(props) => {
-                    return <EmployeeForm {...props} addEmployee={this.addEmployee} employees={this.state.employees}/>
+                    return <EmployeeForm {...props} addEmployee={this.addEmployee} locations={this.state.locations} employees={this.state.employees}/>
                 }} />
                 <Route exact path="/owners" render={(props) => {
                     if (this.isAuthenticated()) {

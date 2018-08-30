@@ -29,6 +29,18 @@
       "position": "Cat Cuddler",
       "locationId": 2,
       "id": 5
+    },
+    {
+      "name": "kayla",
+      "position": "Cat Cuddler",
+      "locationId": 1,
+      "id": 6
+    },
+    {
+      "name": "bob par",
+      "position": "Dog Walker",
+      "locationId": 1,
+      "id": 7
     }
   ],
   "locations": [
