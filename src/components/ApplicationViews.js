@@ -96,27 +96,22 @@ import Login from './Login/Login'
 
             APIManager.getAllData("animals")
             .then(allAnimals => {
-                this.setState({
-                    animals: allAnimals
-                })
+                newState.animals = allAnimals
             })
             APIManager.getAllData("employees")
             .then(allEmployees => {
-                this.setState({
-                    employees: allEmployees
-                })
+                newState.employees = allEmployees
             })
             APIManager.getAllData("owners")
             .then(allOwners => {
-                this.setState({
-                    owners: allOwners
-                })
+                newState.owners = allOwners
+                    
+                
             })
             APIManager.getAllData("locations")
             .then(allLocations => {
-                this.setState({
-                    locations: allLocations
-                })
+                newState.locations = allLocations
+               
             })
             .then(() => this.setState(newState))
         }
@@ -128,7 +123,7 @@ import Login from './Login/Login'
               
                 <Route exact path="/" render={(props) => {
                     if (this.isAuthenticated()) {
-                    return <LocationList deleteLocation={this.deleteLocation} locations={this.state.locations} />
+                    return <LocationList {...props} deleteLocation={this.deleteLocation} employees={this.state.employees} locations={this.state.locations} />
                     } else {
                     return <Redirect to="/login" />
                     }
@@ -153,7 +148,7 @@ import Login from './Login/Login'
 
                 <Route exact path="/employees" render={props => {
                     if (this.isAuthenticated()) {
-                    return <EmployeeList deleteEmployee={this.deleteEmployee} animals={this.state.animals}
+                    return <EmployeeList {...props} deleteEmployee={this.deleteEmployee} animals={this.state.animals}
                              employees={this.state.employees} />
                     } else {
                     return <Redirect to="/login" />

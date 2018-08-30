@@ -1,28 +1,33 @@
 {
   "employees": [
     {
-      "id": 1,
       "name": "Kayla Reid",
-      "position": "Cat cuddler"
+      "position": "Cat cuddler",
+      "locationId": 1,
+      "id": 1
     },
     {
-      "id": 2,
       "name": "Helen Chalmers",
-      "position": "Puppy lover"
+      "position": "Puppy lover",
+      "locationId": 2,
+      "id": 2
     },
     {
-      "id": 3,
       "name": "Madi Peper",
-      "position": "Puppy Lover"
+      "position": "Puppy Lover",
+      "locationId": 4,
+      "id": 3
     },
     {
-      "id": 4,
       "name": "Shannon Reid",
-      "position": "Cat cuddler"
+      "position": "Cat cuddler",
+      "locationId": 3,
+      "id": 4
     },
     {
       "name": "Heather Jones",
       "position": "Cat Cuddler",
+      "locationId": 2,
       "id": 5
     }
   ],
@@ -86,7 +91,7 @@
     {
       "name": "bon bon",
       "type": "Dog",
-      "employeeId": 1,
+      "employeeId": 4,
       "id": 36
     },
     {
