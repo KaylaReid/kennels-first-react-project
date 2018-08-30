@@ -54,21 +54,15 @@
   ],
   "animals": [
     {
-      "name": "fluffy",
-      "type": "white fluffy cat",
-      "employeeId": 2,
-      "id": 30
-    },
-    {
       "name": "kayla",
-      "type": "dog",
-      "employeeId": 2,
+      "type": "cat",
+      "employeeId": 1,
       "id": 31
     },
     {
       "name": "Maggie",
       "type": "Dog",
-      "employeeId": 2,
+      "employeeId": 5,
       "id": 32
     },
     {
@@ -80,8 +74,44 @@
     {
       "name": "Dejoncé",
       "type": "Happy CAT!",
-      "employeeId": 2,
+      "employeeId": 3,
       "id": 34
+    },
+    {
+      "name": "Knoxs",
+      "type": "Dog",
+      "employeeId": 2,
+      "id": 35
+    },
+    {
+      "name": "bon bon",
+      "type": "Dog",
+      "employeeId": 1,
+      "id": 36
+    },
+    {
+      "name": "Mr. pickles",
+      "type": "grumpy cat",
+      "employeeId": 5,
+      "id": 37
+    },
+    {
+      "name": "satchamo",
+      "type": "Dog",
+      "employeeId": 1,
+      "id": 38
+    },
+    {
+      "name": "Kitty",
+      "type": "cat",
+      "employeeId": 2,
+      "id": 39
+    },
+    {
+      "name": "ben2",
+      "type": "grumpy",
+      "employeeId": 1,
+      "id": 40
     }
   ],
   "owners": [

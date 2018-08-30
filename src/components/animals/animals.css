@@ -11,8 +11,11 @@
 }
 
 .card {
-    width: 10rem;
     margin-top: 1em;
+}
+.animal-card {
+    min-width: 15em;
+    max-width: 15em;
 }
 
 .card-title {

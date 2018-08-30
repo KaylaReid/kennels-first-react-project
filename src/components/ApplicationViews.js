@@ -135,7 +135,7 @@ import Login from './Login/Login'
                 }} />
                 <Route exact path="/animals" render={(props) => {
                     if (this.isAuthenticated()) {
-                    return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    return <AnimalList {...props} deleteAnimal={this.deleteAnimal} employees={this.state.employees} animals={this.state.animals} />
                     } else {
                     return <Redirect to="/login" />
                     }
@@ -153,7 +153,7 @@ import Login from './Login/Login'
 
                 <Route exact path="/employees" render={props => {
                     if (this.isAuthenticated()) {
-                    return <EmployeeList deleteEmployee={this.deleteEmployee}
+                    return <EmployeeList deleteEmployee={this.deleteEmployee} animals={this.state.animals}
                              employees={this.state.employees} />
                     } else {
                     return <Redirect to="/login" />

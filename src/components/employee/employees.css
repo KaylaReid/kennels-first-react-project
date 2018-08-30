@@ -9,7 +9,6 @@
     margin-top: 3em;
 }
 .card {
-    width: 10rem;
     margin-top: 1em;
 }
 
@@ -32,4 +31,13 @@
 }
 .employee-form {
     margin-top: 4em;
+}
+.employes-card {
+    min-width: 50em;
+}
+.animals--caretaker {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
