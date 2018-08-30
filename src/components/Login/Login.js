@@ -9,7 +9,7 @@ export default class Login extends Component {
     state = {
         email: "",
         password: "",
-        // isChecked: false
+        isChecked: false
     }
 
     // Update state whenever an input field is edited
@@ -23,8 +23,7 @@ export default class Login extends Component {
     // Simplistic handler for login submit
     handleLogin = (e) => {
         e.preventDefault()
-        if(e.target.id === 'remeberMe'){
-            // this.setState({isChecked: true})
+        if(this.state.isChecked === true){
             localStorage.setItem(
                 "credentials",
                 JSON.stringify({
@@ -32,7 +31,7 @@ export default class Login extends Component {
                     password: this.state.password
                 })
             )
-       
+            this.props.history.push("/")
         } else {
             sessionStorage.setItem(
                 "credentials",
@@ -64,7 +63,7 @@ export default class Login extends Component {
                        placeholder="Password"
                        required="" /><br />
                 <label htmlFor="reemberMe">Remeber Me</label>
-                <input onClick={this.handleLogin} id="remeberMe" type="checkbox"/><br />
+                <input onClick={() => (this.setState({isChecked: true}))} id="rememberMe" type="checkbox"/><br />
                 <button type="submit">Sign in</button>
             </form>
         )

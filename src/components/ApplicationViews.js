@@ -27,7 +27,7 @@ import Login from './Login/Login'
             //, isLoaded: false
         }
 
-        isAuthenticated = () => localStorage.getItem("credentials") !== null
+        isAuthenticated = () => ((sessionStorage.getItem("credentials") !== null) || (localStorage.getItem("credentials") !== null))
 
         deleteAnimal = (animal) => APIManager.removeAndListData("animals", animal.id)
             .then(animals => {
