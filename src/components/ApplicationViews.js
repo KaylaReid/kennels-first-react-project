@@ -24,7 +24,6 @@ import Login from './Login/Login'
             animals: [],
             employees: [],
             owners: []
-            //, isLoaded: false
         }
 
         isAuthenticated = () => ((sessionStorage.getItem("credentials") !== null) || (localStorage.getItem("credentials") !== null))

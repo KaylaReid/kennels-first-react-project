@@ -55,8 +55,8 @@
   "animals": [
     {
       "name": "fluffy",
-      "type": "white cat",
-      "employeeId": 3,
+      "type": "white fluffy cat",
+      "employeeId": 2,
       "id": 30
     },
     {
@@ -109,6 +109,11 @@
       "name": "Winston Churchill",
       "phoneNumber": "675-987-2389",
       "id": 9
+    },
+    {
+      "name": "Jack Smith",
+      "phoneNumber": "654-987-9287",
+      "id": 10
     }
   ]
 }

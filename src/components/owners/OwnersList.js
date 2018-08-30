@@ -14,7 +14,6 @@ export default class OwnersList extends Component {
                 <div className="owners">
                 {
                     this.props.owners.map(owner =>
-                        <div className="owner-container">
                             <div className="card-body card" key={owner.id}>
                                 <div className="card-title">
                                     <h4>{owner.name}</h4>
@@ -24,7 +23,6 @@ export default class OwnersList extends Component {
                                     <Link className="nav-link" to={`/owners/${owner.id}`}>Details</Link>
                                 </div>
                             </div>
-                        </div>
                     )
                 }
                 </div>

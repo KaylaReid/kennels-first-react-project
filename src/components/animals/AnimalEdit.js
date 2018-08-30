@@ -19,7 +19,7 @@ export default class AnimalEdit extends Component {
      edit = (event) => {
          event.preventDefault()
          let employeeId = this.state.employeeId
-        if(typeof (this.state.employeeId) != 'number'){
+        if(typeof (this.state.employeeId) !== 'number'){
             employeeId = this.props.employees.find(e => this.state.employeeId === e.name).id
         }
         const newAnimal = {
@@ -33,7 +33,7 @@ export default class AnimalEdit extends Component {
     }
     
     componentDidMount () {
-        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId)) || {}
+        const animal = this.props.animals.find(a => a.id === parseInt(this.props.match.params.animalId, 0)) || {}
         this.setState({
             name: animal.name,
             type: animal.type,
