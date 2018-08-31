@@ -8,7 +8,7 @@ export default class LocationList extends Component {
     render() {
          return(
             <section className="locations">
-                <h2>Our Locations</h2>
+                <h2 className="header">Our Locations</h2>
                 {
                 this.props.locations.map(location =>
                         <div id={`location--${location.id}`} key={location.id}>
@@ -22,14 +22,11 @@ export default class LocationList extends Component {
                                         this.props.employees
                                         .filter(employee => employee.locationId === location.id)
                                         .map(employee => {
-                                             return (<div className="employee-list">
+                                             return (<div className="employee-list" key={employee.id}>
                                                         <li>{employee.name}</li>
                                                    </div>)
                                         })
                                     }
-                                              {/* this.props.animals
-                                    .filter(animal => animal.employeeId === employee.id)
-                                    .map(animal => <AnimalCard key={animal.id} animal={animal} {...this.props} />) */}
                                     <button onClick={() => this.props.deleteLocation(location)}
                                         className="card-link">Remove Location</button>
                                 </div>

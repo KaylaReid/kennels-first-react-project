@@ -9,7 +9,7 @@ export default class EmployeeList  extends Component {
         return (
             <React.Fragment>
             <section className="employee-section">
-                <h2 className="employees">Our Employees</h2>
+                <h2 className="employees header">Our Employees</h2>
                 <div className="employeeButton">
                     <button type="button" className="btn btn-success"
                     onClick={() => {this.props.history.push("/employees/new")}}>Add New Employee</button>

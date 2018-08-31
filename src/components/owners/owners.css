@@ -33,3 +33,7 @@
 .owner-form {
     margin-top: 4em;
 }
+.header {
+    background-color: rgba(102, 0, 102, 0.534);
+    padding: .5em;
+}

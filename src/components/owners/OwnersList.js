@@ -6,7 +6,7 @@ export default class OwnersList extends Component {
     render() {
          return(
             <section className="owners-section">
-                <h2 className="owners">Owners</h2>
+                <h2 className="owners header">Owners</h2>
                 <div className="ownerButton">
                     <button type="button" className="btn btn-success"
                     onClick={() => {this.props.history.push("/owners/new")}}>Add New Owner</button>

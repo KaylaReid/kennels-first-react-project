@@ -14,7 +14,6 @@ import EmployeeForm from './employee/EmployeeForm'
 import APIManager from "../dataManager/APIManager"
 import NavBar from "./nav/NavBar"
 
-// import { Redirect} from 'react-router-dom'
 
     class ApplicationViews extends Component {
 
@@ -23,10 +22,9 @@ import NavBar from "./nav/NavBar"
             locations: [],
             animals: [],
             employees: [],
-            owners: []
+            owners: [],
+            login: true
         }
-
-        // isAuthenticated = () => ((sessionStorage.getItem("credentials") !== null) || (localStorage.getItem("credentials") !== null))
 
         deleteAnimal = (animal) => APIManager.removeAndListData("animals", animal.id)
             .then(animals => {
@@ -67,11 +65,6 @@ import NavBar from "./nav/NavBar"
             });
         }
 
-        // trying to make the delete from details page render the list page
-        // redirect = () => {
-        //     return <Redirect to='/EmployeeList'/>
-        // }
-
         addAnimal = animal => APIManager.post(animal, "animals")
             .then(() => APIManager.getAllData("animals"))
             .then(animals => this.setState({
@@ -89,6 +82,12 @@ import NavBar from "./nav/NavBar"
             .then(owners => this.setState({
                 owners: owners
              }))
+
+        handleLogout = () => {
+            sessionStorage.removeItem("credentials");
+            localStorage.removeItem("credentials")
+            this.setState({login: false})
+        }
 
 
         componentDidMount() {
@@ -122,7 +121,7 @@ import NavBar from "./nav/NavBar"
                 {
                     this.props.isAuthenticated() &&
                     <div className="wrapper">
-                        <NavBar />
+                        <NavBar handleLogout={this.handleLogout}/>
                         <Route exact path="/" render={(props) => {    
                             return <LocationList {...props} deleteLocation={this.deleteLocation} employees={this.state.employees} locations={this.state.locations} />     
                         }} />

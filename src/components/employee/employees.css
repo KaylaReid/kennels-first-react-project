@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 3em;
+    
 }
 .card {
     margin-top: 1em;
@@ -40,4 +41,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+.header {
+    background-color: rgba(102, 0, 102, 0.534);
+    padding: .5em;
 }

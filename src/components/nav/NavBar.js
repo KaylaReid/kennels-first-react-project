@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import './NavBar.css'
 
-
 class NavBar extends Component {
     render() {
         return (
@@ -25,6 +24,7 @@ class NavBar extends Component {
                         <input className="nav-link" type="text" placeholder="Search"/>
                     </li>
                 </ul>
+                <button className="Logout" onClick={this.props.handleLogout}>Logout</button>
             </nav>
         )
     }
